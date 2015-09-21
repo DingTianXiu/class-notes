@@ -1,0 +1,80 @@
+/*
+KISSY CSS Reset
+理念：清除和重置是紧密不可分的
+特色：1.适应中文 2.基于最新主流浏览器
+*/
+/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+th, td { /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 设置默认字体 */
+body,
+button, input, select, textarea { /* for ie */
+    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/* 重置列表元素 */
+ul, ol { list-style: none; }
+
+/* 重置文本格式元素 */
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+q:before, q:after { content: ‘‘; }
+
+/* 重置表单元素 */
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: none; } /* img 搭车：让链接里的 img 无边框 */
+/* 注：optgroup 无法扶正 */
+button, input, select, textarea {
+    font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+}
+
+/* 重置表格元素 */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 重置 hr */
+hr {
+    border: none;
+    height: 1px;
+}
+
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁 */
+html { overflow-y: scroll; }
+
+测试过的浏览器：IE 6+, Firefox 3.5+, Safari 4+, Chrome 2+, Opera 10+
+
+和 YUI cssreset 的差异点：
+
+清除内外边距的元素，去掉了 div, code（在测试浏览器中，没发现有边距）, 增加了 button（感觉是 YUI 遗漏了）.
+去掉了 YUI 里对 html 颜色和背景色的设置。在测试浏览器中，没有发现差异。（要设的话，推荐background: transparent）
+对于 address, caption, …, em, strong 等文本格式元素，做了调整。保留了 strong 和 th 的粗体。
+对 abbr 和 acronym 做了调整，使得在非 ie6 下可视性更好。
+去掉了 sup 和 sub 的样式，直接用浏览器默认的即可。
+对于 input, select, textarea 表单元素，去掉了针对 ie 的 inherit, 只保留了 font-size 的 inherit hack. 因为其它 hack 经测试已失效。
+增加了一些元素的默认样式。
+此外，对整体代码的组织形式做了调整，按照元素的类别将代码进行了分组。
